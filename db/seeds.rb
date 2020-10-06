@@ -175,11 +175,21 @@ Movie.create!([
   }
 ])
 
+User.create!(name: 'Andy', email: 'andy@example.com',
+             password: 'secret', username: 'strugglebunny', admin: true)
+User.create!(name: 'Larry', email: 'larry@example.com',
+             password: 'secret', username: 'larry00', admin: false)
+User.create!(name: 'Curly', email: 'curly@example.com',
+             password: 'secret', username: 'culry2000', admin: false)
+User.create!(name: 'Moe', email: 'moe@example.com',
+             password: 'secret', username: 'moemoney', admin: false)
+
 movie = Movie.find(1)
 
-movie.reviews.create!(name: "Larry", stars: 5, comment: "Awesome!")
-movie.reviews.create!(name: "Daisy", stars: 4, comment: "Great!")
-movie.reviews.create!(name: "Moe", stars: 3, comment: "Spilled my popcorn!")
+movie.reviews.create!(user: User.find(2), stars: 5, comment: "Awesome!")
+movie.reviews.create!(user: User.find(3), stars: 4, comment: "Great!")
+movie.reviews.create!(user: User.find(4), stars: 3, 
+                      comment: "Spilled my popcorn!")
 
 Genre.create(name: "Action")
 Genre.create(name: "Comedy")
