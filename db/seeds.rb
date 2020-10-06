@@ -184,7 +184,7 @@ User.create!(name: 'Curly', email: 'curly@example.com',
 User.create!(name: 'Moe', email: 'moe@example.com',
              password: 'secret', username: 'moemoney', admin: false)
 
-movie = Movie.find(1)
+movie = Movie.find_by(title: 'Avengers: Endgame')
 
 movie.reviews.create!(user: User.find(2), stars: 5, comment: "Awesome!")
 movie.reviews.create!(user: User.find(3), stars: 4, comment: "Great!")
