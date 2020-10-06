@@ -1,0 +1,25 @@
+<!-- 
+  TODO: Figure out how to change instance variables to local.
+        Then update in reviews/new & reviews/edit
+-->
+
+<%= form_with(model: [@movie, @review], local: true) do |f| %>
+  <%= render "shared/errors", object: @review %>  
+
+  <%= f.label :stars %>
+  <!-- Radio button example -->
+  <% Review::STARS.each do |star| %>
+    <span class="star">
+      <%= f.radio_button :stars, star %>
+      <%= label_tag star %>
+    </span>
+  <% end %>
+
+  <!-- Drop down list example -->
+  <%# f.select :stars, Review::STARS, prompt: 'Pick one' %>
+
+  <%= f.label :comment %>
+  <%= f.text_area :comment, rows: 5, placeholder: 'What did you think?' %>
+
+  <%= f.submit "Post Review"%>
+<% end%>

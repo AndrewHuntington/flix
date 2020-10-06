@@ -1,0 +1,16 @@
+<h1>Movies in the <%= @genre.name %> Genre:</h1>
+
+<ul>
+  <% @movies.sort.each do |m| %>
+    <li><%= m.title %></li>
+  <% end %>
+</ul>
+
+
+<% if current_user_admin? %>
+  <section class="admin">
+    <%= link_to "Edit Genre Name", edit_genre_path(@genre), class: "button" %>
+    <%= link_to 'Delete', @genre, class: "button", method: :delete, 
+                data: { confirm: 'Are you sure?'} %>
+  </section>
+<% end %>
