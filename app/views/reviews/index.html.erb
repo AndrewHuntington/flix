@@ -14,11 +14,15 @@
           <%= time_ago_in_words(review.created_at) %> ago
         </span>
       </p>
-      <%= link_to 'Delete Review', [@movie, review], 
+      <% if current_user_admin? || current_user == review.user %>
+        <%= link_to 'Delete Review', [@movie, review], 
                   class: "button", method: :delete, 
                   data: { confirm: 'Are you sure?'} %>
-      <%= link_to 'Edit Review', edit_movie_review_path(@movie, review), 
+      <% end %>
+      <% if current_user_admin? || current_user == review.user %>
+        <%= link_to 'Edit Review', edit_movie_review_path(@movie, review), 
                    class: "button" %>
+      <% end %>
     </li>
   <% end %>
 </ul>
